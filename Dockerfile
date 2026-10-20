@@ -1,11 +1,10 @@
-FROM alpine:latest
+FROM node:22-slim
 
 WORKDIR /app
 
 ENV NODE_ENV=production
-ENV PATH=/usr/local/bin:$PATH
 
-RUN apk add --no-cache ca-certificates git nodejs npm
+RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates git && update-ca-certificates && rm -rf /var/lib/apt/lists/*
 
 RUN git clone --depth 1 https://github.com/IMROVOID/Omnirush2API.git .
 
