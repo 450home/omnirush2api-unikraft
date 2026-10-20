@@ -35,14 +35,13 @@ jobs:
 
       - name: Remove existing instance (if any)
         run: |
-          unikraft instances delete omnirush2api --metro was || true
+          unikraft instances delete omnirush2api || true
 
       - name: Deploy to WAS
         run: |
           unikraft run --metro was \
             -n omnirush2api \
             -m 1G \
-            -p 20129:20129/tls+http \
+            -p 443:20129/tls+http \
             -e OMNIRUSH_REFRESH_TOKEN="${{ secrets.OMNIRUSH_REFRESH_TOKEN }}" \
-            ${{ secrets.API_KEY != '' && format('-e API_KEY={0}', secrets.API_KEY) || '' }} \
             --image susanlee/omnirush2api:latest
