@@ -37,9 +37,9 @@ jobs:
         run: |
           unikraft instances delete omnirush2api || true
 
-      - name: Deploy to WAS
+      - name: Deploy to SFO
         run: |
-          unikraft run --metro was \
+          unikraft run --metro sfo \
             -n omnirush2api \
             -m 512M \
             -p 443:20129/tls+http \
