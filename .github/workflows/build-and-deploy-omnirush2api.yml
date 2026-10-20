@@ -41,7 +41,7 @@ jobs:
         run: |
           unikraft run --metro was \
             -n omnirush2api \
-            -m 1G \
+            -m 512M \
             -p 443:20129/tls+http \
             -e OMNIRUSH_REFRESH_TOKEN="${{ secrets.OMNIRUSH_REFRESH_TOKEN }}" \
             --image susanlee/omnirush2api:latest
